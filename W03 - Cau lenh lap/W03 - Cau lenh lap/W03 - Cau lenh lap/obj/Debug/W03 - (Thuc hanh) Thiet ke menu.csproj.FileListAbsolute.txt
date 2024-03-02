@@ -5,3 +5,10 @@ C:\Users\Nguyễn Minh Tú\OneDrive\Desktop\Codegym\C#\W02,3\W03 - Cau lenh lap\
 C:\Users\Nguyễn Minh Tú\OneDrive\Desktop\Codegym\C#\W02,3\W03 - Cau lenh lap\W03 - Cau lenh lap\W03 - Cau lenh lap\obj\Debug\W03 - (Thuc hanh) Thiet ke menu.csproj.CoreCompileInputs.cache
 C:\Users\Nguyễn Minh Tú\OneDrive\Desktop\Codegym\C#\W02,3\W03 - Cau lenh lap\W03 - Cau lenh lap\W03 - Cau lenh lap\obj\Debug\W03 - Cau lenh lap.exe
 C:\Users\Nguyễn Minh Tú\OneDrive\Desktop\Codegym\C#\W02,3\W03 - Cau lenh lap\W03 - Cau lenh lap\W03 - Cau lenh lap\obj\Debug\W03 - Cau lenh lap.pdb
+C:\Users\Nguyễn Minh Tú\OneDrive\Documents\GitHub\Codegym---Csharp\W03 - Cau lenh lap\W03 - Cau lenh lap\W03 - Cau lenh lap\bin\Debug\W03 - Cau lenh lap.exe.config
+C:\Users\Nguyễn Minh Tú\OneDrive\Documents\GitHub\Codegym---Csharp\W03 - Cau lenh lap\W03 - Cau lenh lap\W03 - Cau lenh lap\bin\Debug\W03 - Cau lenh lap.exe
+C:\Users\Nguyễn Minh Tú\OneDrive\Documents\GitHub\Codegym---Csharp\W03 - Cau lenh lap\W03 - Cau lenh lap\W03 - Cau lenh lap\bin\Debug\W03 - Cau lenh lap.pdb
+C:\Users\Nguyễn Minh Tú\OneDrive\Documents\GitHub\Codegym---Csharp\W03 - Cau lenh lap\W03 - Cau lenh lap\W03 - Cau lenh lap\obj\Debug\W03 - (Thuc hanh) Thiet ke menu.csproj.AssemblyReference.cache
+C:\Users\Nguyễn Minh Tú\OneDrive\Documents\GitHub\Codegym---Csharp\W03 - Cau lenh lap\W03 - Cau lenh lap\W03 - Cau lenh lap\obj\Debug\W03 - (Thuc hanh) Thiet ke menu.csproj.CoreCompileInputs.cache
+C:\Users\Nguyễn Minh Tú\OneDrive\Documents\GitHub\Codegym---Csharp\W03 - Cau lenh lap\W03 - Cau lenh lap\W03 - Cau lenh lap\obj\Debug\W03 - Cau lenh lap.exe
+C:\Users\Nguyễn Minh Tú\OneDrive\Documents\GitHub\Codegym---Csharp\W03 - Cau lenh lap\W03 - Cau lenh lap\W03 - Cau lenh lap\obj\Debug\W03 - Cau lenh lap.pdb

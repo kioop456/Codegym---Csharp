@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W02 - (Thuc hanh) Tinh so c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W02 - (Bai tap) Ung dung doc so thanh chu", "(Bai tap) Ung dung doc so thanh chu\W02 - (Bai tap) Ung dung doc so thanh chu.csproj", "{6D56491B-F0DE-4967-8423-BB0892B6C935}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W02 - (Thuc hanh) Hien thi thoi gian cua he thong", "W02 - (Thuc hanh) Hien thi thoi gian cua he thong\W02 - (Thuc hanh) Hien thi thoi gian cua he thong.csproj", "{4850A585-38C6-4A57-92BC-36BB091ED895}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6D56491B-F0DE-4967-8423-BB0892B6C935}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D56491B-F0DE-4967-8423-BB0892B6C935}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D56491B-F0DE-4967-8423-BB0892B6C935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4850A585-38C6-4A57-92BC-36BB091ED895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4850A585-38C6-4A57-92BC-36BB091ED895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4850A585-38C6-4A57-92BC-36BB091ED895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4850A585-38C6-4A57-92BC-36BB091ED895}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
