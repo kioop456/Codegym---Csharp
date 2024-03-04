@@ -1,75 +1,294 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Buoi9_
 {
-    internal class Program
+    internal partial class Program
     {
+        static bool isGameOver = false;
+
+        static int N = 15;
+        static int M = 30;
+        static int speed = 500;
+        static int score = 0;
+
+        static string SKIN = "*";
+        static string BRICK = "#";
+        static string SPACE = " ";
+        static string APPLE = "@";
+
+        static string direction = Direction.DIRECTION_RIGHT;
+
+        static string[,] board = new string[N, M];
+        static Snake snake = new Snake();
+        static Food food = new Food();
+
+        /// <summary>
+        /// Tính toán vị trí của tường
+        /// </summary>
+        private static void calcWall()
+        {
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < M; j++)
+                {
+                    if (i == 0 || i == N - 1 || j == 0 || j == M - 1)
+                    {
+                        board[i, j] = BRICK;
+                    }
+                }
+            }
+        }
+
+        private static void calcSnake()
+        {
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < M; j++)
+                {
+                    //đầu rắn
+                    int row = snake.Head.Row;
+                    int colmn = snake.Head.Column;
+                    if (i == row && j == colmn)
+                    {
+                        board[i, j] = SKIN;
+                    }
+
+
+                    //thân rắn
+                    List<Point> body = snake.Body;
+                    for (int k = 0; k < body.Count; k++)
+                    {
+                        Point element = body[k];
+                        if (i == element.Row && j == element.Column)
+                        {
+                            board[i, j] = SKIN;
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void calcFood()
+        {
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < M; j++)
+                {
+                    if (i == food.Point.Row && j == food.Point.Column)
+                    {
+                        board[i, j] = APPLE;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Khởi tạo giá trị ban đầu cho board là các dấu space
+        /// </summary>
+        private static void resetBoard()
+        {
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < M; j++)
+                {
+                    board[i, j] = SPACE;
+                }
+            }
+        }
+
+        /// <summary>
+        /// In dữ liệu trong board ra màn hình
+        /// </summary>
+        private static void printBoard()
+        {
+            Console.WriteLine($"Score: {score}, speed: {speed}");
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < M; j++)
+                {
+                    string value = board[i, j];
+
+                    //Nếu là wall thì có màu đỏ
+                    if (value.Equals(BRICK))
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.Write(value);
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.Write(value);
+                    }
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        static void ListenKey()
+        {
+            while (!isGameOver)
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+
+                if (keyInfo.Key == ConsoleKey.UpArrow)
+                {
+                    if (direction != Direction.DIRECTION_DOWN)
+                    {
+                        direction = Direction.DIRECTION_UP;
+                    }
+
+                }
+                else if (keyInfo.Key == ConsoleKey.DownArrow)
+                {
+                    if (direction != Direction.DIRECTION_UP)
+                    {
+                        direction = Direction.DIRECTION_DOWN;
+                    }
+
+                }
+                else if (keyInfo.Key == ConsoleKey.LeftArrow)
+                {
+                    if (direction != Direction.DIRECTION_RIGHT)
+                    {
+                        direction = Direction.DIRECTION_LEFT;
+                    }
+
+                }
+                else if (keyInfo.Key == ConsoleKey.RightArrow)
+                {
+                    if (direction != Direction.DIRECTION_LEFT)
+                    {
+
+                        direction = Direction.DIRECTION_RIGHT;
+                    }
+                }
+            }
+        }
         static void Main(string[] args)
         {
-            int maxWidth = 5;
-            int maxHeight = 5;
-            Console.Clear();
-            for (int i = 0; i <= maxWidth; i++)
+            #region tham khao
+            //int maxWidth = 5;
+            //int maxHeight = 5;
+            //Console.Clear();
+            //for (int i = 0; i <= maxWidth; i++)
+            //{
+            //    Console.SetCursorPosition(i, 0);
+            //    Console.BackgroundColor = ConsoleColor.Blue;
+            //    Console.Write("#");
+            //    Console.SetCursorPosition(i, maxWidth);
+            //    Console.ForegroundColor = ConsoleColor.Blue;
+            //    Console.Write("#");
+            //}
+
+            //for (int i = 0; i < maxHeight; i++)
+            //{
+            //    Console.SetCursorPosition(0, i);
+            //    Console.BackgroundColor = ConsoleColor.Blue;
+            //    Console.Write("#");
+            //    Console.SetCursorPosition(maxHeight, i);
+            //    Console.ForegroundColor = ConsoleColor.Blue;
+            //    Console.Write("#");
+            //}
+
+            //int middleX = (maxWidth / 2) + 1;
+            //int middleY = (maxHeight / 2) + 1;
+
+            //Console.SetCursorPosition(middleX, middleY);
+            //int currentX = middleX;
+            //int currentY = middleY;
+
+            //while (true)
+            //{
+            //    ConsoleKeyInfo userKey = Console.ReadKey();
+
+            //    switch (userKey.Key)
+            //    {
+            //        case ConsoleKey.UpArrow:
+            //            currentY--;
+            //            break;
+            //        case ConsoleKey.DownArrow:
+            //            currentY++;
+            //            break;
+            //        case ConsoleKey.LeftArrow:
+            //            currentX--;
+            //            break;
+            //        case ConsoleKey.RightArrow:
+            //            currentX++;
+            //            break;
+            //    }
+            //    Console.SetCursorPosition(currentX, currentY);
+            //    Console.Write("0");
+            //    if (currentX == 0)
+            //    {
+            //        break;
+            //    }
+            //}
+            //Console.Clear();
+            //Console.WriteLine("game over");
+            //Console.ReadKey();
+            #endregion
+            Thread thread = new Thread(Program.ListenKey);
+            thread.Start();
+
+            food.RandomPoint(snake, N, M);
+
+            while (true)
             {
-                Console.SetCursorPosition(i, 0);
-                Console.BackgroundColor = ConsoleColor.Blue;
-                Console.Write("#");
-                Console.SetCursorPosition(i, maxWidth);
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write("#");
-            }
+                Console.Clear();
 
-            for(int i = 0; i < maxHeight; i++)
-            {
-                Console.SetCursorPosition(0, i);
-                Console.BackgroundColor = ConsoleColor.Blue;
-                Console.Write("#");
-                Console.SetCursorPosition(maxHeight, i);
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write("#");
-            }
-            
-            int middleX = (maxWidth / 2) + 1;
-            int middleY = (maxHeight / 2) + 1;
+                resetBoard();
 
-            Console.SetCursorPosition(middleX, middleY);
-            int currentX = middleX;
-            int currentY = middleY;
+                //Tính toán vị trí của tường
+                calcWall();
 
-            while(true)
-            {
-                ConsoleKeyInfo userKey = Console.ReadKey();
+                //Tính toán vị trí của thức ăn
+                calcFood();
 
-                switch(userKey.Key)
+                //Tính toán vị trí của rắn
+                calcSnake();
+
+                //In ra dữ liệu đã được tính toán
+                printBoard();
+
+                if (snake.Head.Row == food.Point.Row && snake.Head.Column == food.Point.Column)
                 {
-                    case ConsoleKey.UpArrow:
-                        currentY--;
-                        break;
-                    case ConsoleKey.DownArrow:
-                        currentY++;
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        currentX--;
-                        break;
-                    case ConsoleKey.RightArrow:
-                        currentX++;
-                        break;
+                    //rắn dài ra
+                    snake.Body.Add(new Point(-1, -1));
+
+                    //điểm và tốc độ tăng lên
+                    score++;
+                    speed -= 50;
+                    speed = speed < 50 ? 50 : speed;
+
+                    //thức ăn đổi vị trí
+                    food.RandomPoint(snake, N, M);
                 }
-                Console.SetCursorPosition(currentX, currentY);
-                Console.Write("0");
-                if (currentX == 0)
+
+                //đầu va vào thân thì chết
+                if (snake.IsHeadInBody())
                 {
+                    Console.WriteLine("Game Over");
+                    isGameOver = true;
+                    Console.Clear();
+                    printBoard();
                     break;
                 }
-            }
-            Console.Clear();
-            Console.WriteLine("game over");
-            Console.ReadKey();
 
+                snake.move(direction, N, M);
+
+                Task.Delay(speed).Wait();
+            }
+
+            Console.WriteLine("Press any key to exit this game.....");
         }
     }
+
 }

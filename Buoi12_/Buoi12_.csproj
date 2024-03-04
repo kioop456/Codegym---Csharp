@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{34AC0B07-97FC-4C5B-BD9D-2BFB11748829}</ProjectGuid>
+    <ProjectGuid>{ACF2629F-0052-4DA3-A1D0-3760223613F3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Buoi9_</RootNamespace>
-    <AssemblyName>Buoi9_</AssemblyName>
+    <RootNamespace>Buoi12_</RootNamespace>
+    <AssemblyName>Buoi12_</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Direction.cs" />
-    <Compile Include="Food.cs" />
-    <Compile Include="Point.cs" />
+    <Compile Include="Animal.cs" />
+    <Compile Include="IShape.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Snake.cs" />
+    <Compile Include="StopWatch.cs" />
+    <Compile Include="Thuc hanh.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
